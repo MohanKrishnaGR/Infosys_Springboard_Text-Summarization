@@ -2,6 +2,7 @@
     <a><img src="https://i.ibb.co/P4B4LrL/springboard-logo-removebg-preview.png" alt="springboard-logo-removebg-preview" border="0"></a>
 </div>
 
+[![Deploy to Azure Container Instance](https://github.com/MohanKrishnaGR/Infosys_Springboard_Text-Summarization/actions/workflows/azure.yml/badge.svg?event=push)](https://github.com/MohanKrishnaGR/Infosys_Springboard_Text-Summarization/actions/workflows/azure.yml)
 
 ![Docker Image Version](https://img.shields.io/docker/v/mohankrishnagr/infosys_text-summarization/group)
 ![Docker Image Size](https://img.shields.io/docker/image-size/mohankrishnagr/infosys_text-summarization/group)
@@ -26,6 +27,7 @@ Mr. Narendra Kumar
 - [Testing](#testing)
 - [Deployment](#deployment)
 - [Containerization](#containerization)
+- [CI/CD Pipeline](#cicd-pipeline)
 
 ## Problem Statement
 - Developing an automated text summarization system that can accurately and efficiently condense large bodies of text into concise summaries is essential for enhancing business operations.
@@ -159,3 +161,10 @@ Mr. Narendra Kumar
 - Developed a Dockerfile to build a Docker image for the FastAPI application.
 - **Source Code:** `summarizer/Dockerfile`
 - **Image:** [Docker Image](https://hub.docker.com/layers/mohankrishnagr/infosys_text-summarization/group/images/sha256-28802ba2a3b30d36b94fbd878c97585c02c813534fc80fdca5e81494b96bfd08?context=explore)
+
+## CI/CD Pipeline
+- Developed a CI/CD pipeline using Docker, Azure and GitHub Actions.
+- Utilized Azure Container Instance (ACI) for deploying the image, triggers for every push to the main branch.
+- **Source Code:** `.github/workflows/azure.yml`
+- **IPv4 Address:** [Text Summarizer](http://20.235.235.107:8000/) ( http://20.235.235.107:8000/ )
+- **FQDN:** [Text Summarizer](http://text-summarizer.bqegenbyedfzhpa3.centralindia.azurecontainer.io:8000/) ( http://text-summarizer.bqegenbyedfzhpa3.centralindia.azurecontainer.io:8000/ )
