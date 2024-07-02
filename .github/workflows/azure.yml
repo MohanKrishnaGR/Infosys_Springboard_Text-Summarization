@@ -1,0 +1,41 @@
+name: Deploy to Azure Container Instance
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Log in to Docker Hub
+        run: echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u "${{ secrets.DOCKER_USERNAME }}" --password-stdin
+      
+      #- name: Build the Docker image
+      #  run: |
+      #    cd summarizer
+      #    docker build . --file Dockerfile --tag ${{ secrets.REGISTRY_NAME }}/infosys_text-summarization:group # saved_model/model.safetensors -> missing (1.5 GB file size)
+      #    docker push ${{ secrets.REGISTRY_NAME }}/infosys_text-summarization:group
+
+      - name: 'Login via Azure CLI'
+        uses: azure/login@v1 
+        with:
+          creds: ${{ secrets.AZURE_RBAC_CREDENTIALS }} 
+
+      #- name: Update Azure Container Instance
+      #  run: |
+      #    az container update \
+      #      --resource-group ${{ secrets.RESOURCE_GROUP }} \
+      #      --name ${{ secrets.CONTAINER_GROUP_NAME }} \
+      #      --containers name=${{ secrets.CONTAINER_NAME }} image=${{ secrets.REGISTRY_NAME }}/infosys_text-summarization:group
+
+      # Automatically pulls the latest image with the image name and tagname, from docker hub. 
+      - name: Restart Azure Container Instance
+        run: | 
+          az container restart --name ${{ secrets.CONTAINER_GROUP_NAME }} --resource-group ${{ secrets.RESOURCE_GROUP }}
+                     
