@@ -8,9 +8,10 @@
 ![Docker Image Size](https://img.shields.io/docker/image-size/mohankrishnagr/infosys_text-summarization/group)
 ![Docker Pulls](https://img.shields.io/docker/pulls/mohankrishnagr/infosys_text-summarization)
 <i>
-# Text Summarization
 
+# Text Summarization
 A project by AI/ML Interns (Group 4) @ Infosys Springboard, Summer 2024.
+
 ## Mentor
 Mr. Narendra Kumar
 
@@ -58,12 +59,12 @@ Mr. Narendra Kumar
 ## Workflow
 - Workflow for Abstractive Text Summarizer:
 <div align="center">
-    <a><img src="https://drive.usercontent.google.com/u/0/uc?id=1-smea28F10cOnmXXUj24QkzEZL-ffhWt&export=download" width="640" height="640"  border="0"></a>
+    <a><img src="https://drive.usercontent.google.com/u/0/uc?id=1-smea28F10cOnmXXUj24QkzEZL-ffhWt&export=download" border="0"></a>
 </div><br>
 
 - Workflow for Extractive Text Summarizer:
 <div align="center">
-    <a><img src="https://drive.usercontent.google.com/u/0/uc?id=1vS2Gm5ccJvjxH7fsnyOf3ARk2pNTR75p&export=download" width="640" height="640"  border="0"></a>
+    <a><img src="https://drive.usercontent.google.com/u/0/uc?id=1vS2Gm5ccJvjxH7fsnyOf3ARk2pNTR75p&export=download" border="0"></a>
 </div>
 
 
@@ -98,8 +99,10 @@ Mr. Narendra Kumar
 - Trained the model using manual training loop and evaluation loop in PyTorch. Implemented in: `src/model.ipynb`
 - **Model Evaluation:** Source code:`src/evaluation.ipynb`
     - Obtained inconsistent results in inferencing.
+    - ROUGE1 (F-Measure) = 00.018
     - There's a suspected tensor error while training using method 1, which could be attributed to the inconsistency of the model's output.
-    -  Dire need to implement alternative approach   
+    - Rejected for the further deployment.
+    - Dire need to implement alternative approach.   
 
 ### Method 2 – Trainer Class Implementation
 - Utilized Trainer API from Hugging Face for optimized transformer model training. Implemented in: `src/bart.ipynb`
@@ -107,8 +110,10 @@ Mr. Narendra Kumar
      
 - **Evaluation:** Performance metrics using ROUGE scores. Source code: `src/rouge.ipynb`
     - Model 2 - results outperformed that of method 1.
-    - ROUGE1 (F-Measure) = 61.32 -> Benchmark grade
+    - <strong>ROUGE1 (F-Measure) = 61.32</strong> -> Benchmark grade
+        - Significantly higher than typical scores reported for state-of-the-art models on common datasets.
     - GPT4 performance for text summarization - ROUGE1 (F-Measure) is 63.22
+    - Selected for further deployment.
  
 - Comparative analysis showed significant improvement in performance after fine-tuning. Source code: `src/compare.ipynb`
 <div align="center">
@@ -120,11 +125,15 @@ Mr. Narendra Kumar
 - It is the expanded topic modeling specifically to be applied to multiple lower-level specialized entities (i.e., groups) embedded in a single document. It operates at the individual document and cluster level.
 - The sentence closest to the centroid (based on Euclidean distance) is selected as the representative sentence for that cluster.
 - **Implementation:** Preprocess text, extract features using TF-IDF, and summarize by selecting representative sentences.
-    - Source code: `src/Extractive_Summarization.ipynb`     
+    - Source code for implentation & evaluation: `src/Extractive_Summarization.ipynb`
+    - ROUGE1 (F-Measure) = 24.71     
 
 ## Testing
-- Implemented text summarization application using Gradio library for a web-based interface.
+- Implemented text summarization application using Gradio library for a web-based interface, for testing the model's inference.
 - **Source Code:** `src/interface.ipynb`
+<div align="center">
+    <a><img src="https://drive.usercontent.google.com/u/0/uc?id=15YsrZBPpEqnrdfzM6Bs8wu_4P1GbN8HZ&export=download" border="0"></a>
+</div><br>
 
 ## Deployment
 <div align="center">
@@ -139,6 +148,7 @@ Mr. Narendra Kumar
 
 ### API Endpoints
 - Developed using FastAPI framework for handling URLs, files, and direct text input.
+    - **Source Code:** `summarizer/app.py` 
 - **Endpoints:**
   - Root Endpoint
   - Summarize URL
@@ -156,6 +166,9 @@ Mr. Narendra Kumar
 ### User Interface
 - Developed a user-friendly interface using HTML, CSS, and JavaScript.
 - **Source Code:** `summarizer/templates/index.html`
+<div align="center">
+    <a><img src="https://drive.usercontent.google.com/u/0/uc?id=1fvuJlBsFtTyhHK1emn-XCWE0KvTuGa2c&export=download" border="0"></a>
+</div><br>
 
 ## Containerization
 - Developed a Dockerfile to build a Docker image for the FastAPI application.
@@ -168,3 +181,22 @@ Mr. Narendra Kumar
 - **Source Code:** `.github/workflows/azure.yml`
 - **IPv4 Address:** [Text Summarizer](http://20.235.235.107:8000/) ( http://20.235.235.107:8000/ )
 - **FQDN:** [Text Summarizer](http://text-summarizer.bqegenbyedfzhpa3.centralindia.azurecontainer.io:8000/) ( http://text-summarizer.bqegenbyedfzhpa3.centralindia.azurecontainer.io:8000/ )
+- **Screenshots:** 
+<div align="center">
+    <a><img src="https://drive.usercontent.google.com/u/0/uc?id=1y0upt5MfiMXMrA5Ar6D0FV91EJ2FIb0p&export=download" border="0"></a>
+</div><br>
+<div align="center">
+    <a><img src="https://drive.usercontent.google.com/u/0/uc?id=1F1agLXesw1XyLh7xBWAC2zxju3bGTaGc&export=download" border="0"></a>
+</div><br>
+<div align="center">
+    <a><img src="https://drive.usercontent.google.com/u/0/uc?id=1M5aIP7_Q7eakyBQ-dSxSaJqJBsblGmzy&export=download" border="0"></a>
+</div><br>
+<div align="center">
+    <a><img src="https://drive.usercontent.google.com/u/0/uc?id=1rrHoRdoJEk8VTyrG8Py2RirkXspZadBQ&export=download" border="0"></a>
+</div><br>
+</i>
+
+----
+
+### End Note
+Thank you for your interest in our project! We welcome any feedback. Feel free to reach out to us.
